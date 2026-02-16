@@ -81,21 +81,15 @@ class AppConfig:
     servicenow_oauth_client_secret: Optional[str] = field(default_factory=lambda: os.getenv("servicenow-oauth-client-secret"))
 
     # ServiceNow Catalog Items - Security Request Item sys_id
-    # Default value is environment-specific and should be overridden in production
-    servicenow_security_request_item_id: str = field(
-        default_factory=lambda: os.getenv(
-            "servicenow-security-request-item-id", 
-            "353b0b318734c6904006ed390cbb351c"  # Default for development environment
-        )
+    # Must be configured via environment variable for your ServiceNow instance
+    servicenow_security_request_item_id: Optional[str] = field(
+        default_factory=lambda: os.getenv("servicenow-security-request-item-id")
     )
     
     # ServiceNow Assignment Groups - Security Operation Center sys_id  
-    # Default value is environment-specific and should be overridden in production
-    servicenow_security_operation_center_id: str = field(
-        default_factory=lambda: os.getenv(
-            "servicenow-security-operation-center-id", 
-            "b6dc823fdb7bf9105db93412f39619c0"  # Default for development environment
-        )
+    # Must be configured via environment variable for your ServiceNow instance
+    servicenow_security_operation_center_id: Optional[str] = field(
+        default_factory=lambda: os.getenv("servicenow-security-operation-center-id")
     )
 
     # Cosmos
